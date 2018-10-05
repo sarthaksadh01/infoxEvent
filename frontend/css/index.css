@@ -1,0 +1,55 @@
+.form-control-borderless {
+border: none;
+}
+
+.form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+border: none;
+outline: none;
+box-shadow: none;
+}
+
+/*https://i.pinimg.com/originals/d2/8f/fb/d28ffb4316f8875c9dce6b82da375d3c.jpg*/
+body{
+background:#20232A url("puzzle.jpg");
+color:#fff;
+   background-size: 1600px 500px;
+background-repeat:no-repeat;
+font-family: 'Eczar', serif;
+font-size:10px;
+}
+
+.circle {border-radius: 50%;  border: 5px solid #fff; width: 170px;height: 170px;position: absolute;}
+.topleft {top: -65px;left: -65px;}
+
+
+
+@media only screen and (max-width: 480px) {
+#abc {
+    display: none;
+}
+.circle{
+    width:130px;
+    height:130px;
+}
+.display-4{
+  font-size:20px;
+  padding-top:40px;
+}
+small{
+    display:inline;
+}
+#cqn{
+    padding-top:-16px;
+    margin-top:-16px;
+    padding-left:-200px;
+    margin-left:-20px;
+}
+
+#cqt{
+    padding-top:300px;
+}
+#rank{
+    font-size:20px;
+}
+
+}

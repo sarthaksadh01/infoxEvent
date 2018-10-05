@@ -2,7 +2,7 @@
 session_start();
 function connect_to_database()
 {
-    $link = mysqli_connect("localhost","navtradi_sadh","sarthak01","navtradi_freelancer");
+    $link = mysqli_connect("localhost","root","","solve-to-unlock");
     if(mysqli_error($link))
     {
       die("Failed connecting to databse.. Please try again!");
@@ -45,8 +45,8 @@ function get_current_q(){
       return $row['prob'];
   }
   else return 0;
-    
-    
+
+
 }
 
 function get_candy(){
@@ -59,8 +59,8 @@ function get_candy(){
       return $row['candy'];
   }
   else return -1;
-    
-    
+
+
 }
 
 function load_q(){
@@ -92,7 +92,7 @@ function get_q(){
     if($qno == 0){
         die("Error Connecting.. please try again!");
     }
-    
+
     else{
         $link = connect_to_database();
         $query = "SELECT * FROM `questions` WHERE id = '$qno'";
@@ -104,7 +104,7 @@ function get_q(){
                 "qtype"=>$row['qtype'],
                 "qcontent"=>$row['qcontent'],
                 "qtext"=>$row['text']
-                
+
                 );
                 return $qdata;
         }
@@ -120,13 +120,31 @@ function get_q_no(){
     if($result){
         $row=mysqli_fetch_assoc($result);
         return $row['prob'];
-        
+
     }
     else{
         return 0;
     }
-    
-    
+
+
+}
+
+
+function get_status(){
+  $email = $_SESSION['email'];
+  $link = connect_to_database();
+  $query = "SELECT status FROM `users` WHERE email = '$email'";
+  $result = mysqli_query($link,$query);
+  if($result){
+    $row = mysqli_fetch_assoc($result);
+    if($row['status']=="yes"){
+      return 1;
+    }
+    else{
+      return 0;
+    }
+  }
+  die("Error connecting...");
 }
 
 
@@ -188,8 +206,8 @@ if(isset($_SESSION['otp']))
      $colg = $_POST['colg'];
      $crs = $_POST['crs'];
      $prob =1;
-    $query = "INSERT INTO `users` (name,email,password,colg,prob,completed,course)
-     VALUES('$name','$email','$password','$colg','$prob','no','$crs')";
+    $query = "INSERT INTO `users` (name,email,password,colg,prob,completed,course,status)
+     VALUES('$name','$email','$password','$colg','$prob','no','$crs','no')";
      $result = mysqli_query($link,$query);
      if($result)
      {
@@ -197,7 +215,7 @@ if(isset($_SESSION['otp']))
       echo "Success!";
     }
     else echo "no database connect";
-    
+
   }
   else echo "not correct";
 
@@ -246,7 +264,7 @@ if(isset($_POST['login']))
   $query ="SELECT * FROM `users` WHERE email = '$email'";
   $result =mysqli_query($link,$query);
   if($result){
-     
+
     if(mysqli_num_rows($result)>0)
 
     {
@@ -254,7 +272,7 @@ if(isset($_POST['login']))
       if($password==$row['password']){
          $_SESSION['email']=$email;
          echo 'success';
-          
+
       }
        else {
       echo 'Invalid credentials!';
@@ -265,7 +283,7 @@ if(isset($_POST['login']))
         echo 'user does not exist';
     }
 
-   
+
   }
   else echo 'Connection Error!';
 
@@ -276,9 +294,9 @@ if(isset($_POST['login']))
 if(isset($_POST['attempt']))
 
 {
-    
+
   if(isset($_SESSION['email'])){
-      
+
       $ans = $_POST['ans'];
     $email = $_SESSION['email'];
    $link = connect_to_database();
@@ -290,7 +308,7 @@ if(isset($_POST['attempt']))
       if($row2['answer']==$ans)
       {
         if($qno!=10){
-            
+
         $query3 = "UPDATE `users` SET prob = prob+1 WHERE email ='$email'";
         }
         else
@@ -302,7 +320,7 @@ if(isset($_POST['attempt']))
           if($qno==10){
               echo "Completed";
           }
-          
+
            else echo "Correct Answer!";
         }
         else echo "Error occured try again!";
@@ -314,12 +332,12 @@ if(isset($_POST['attempt']))
     }
 
     else echo $qno;
-      
+
   }
-  
+
   else echo "User Not Logged in!";
 
- 
+
 
 
 }
@@ -353,7 +371,25 @@ if(isset($_POST['skip']))
 
 if(isset($_POST['nq'])){
      load_q();
-    
+
+}
+
+
+
+if(isset($_POST['status'])){
+
+  $email = $_SESSION['email'];
+  $link = connect_to_database();
+  $query = "UPDATE `users` SET status = 'yes' WHERE email ='$email'";
+  $result = mysqli_query($link,$query);
+  if($result){
+    echo 'Completed!';
+
+  }
+   else echo"Unkown Error Occured!";
+
+
+
 }
 
 ?>

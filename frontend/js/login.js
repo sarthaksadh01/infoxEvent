@@ -66,7 +66,7 @@ $(document).ready(function() {
       $(".circle").show();
 
       $.ajax({
-        url: 'functions.php',
+        url: '././backend/functions.php',
         method: 'POST',
         data: {
           otp_sent: 'yes',
@@ -100,18 +100,18 @@ $(document).ready(function() {
 
 
   $(".log").click(function(event) {
-      
+
     var email = $("#email1").val();
     var password = $("#password1").val();
     var error = check_log(email.trim(), password.trim());
 
-    if (error === "") {   
+    if (error === "") {
         // alert("hii");
     $(".circle").show();
     $(".monga").hide();
 
       $.ajax({
-        url: 'functions.php',
+        url: '././backend/functions.php',
         method: 'POST',
         data: {
           login: 'yes',
@@ -157,7 +157,7 @@ $(document).ready(function() {
     var otp = $("#otp2").val();
 
     $.ajax({
-      url: 'functions.php',
+      url: '././backend/functions.php',
       method: 'POST',
       data: {
         otp_r: 'yes',
@@ -206,5 +206,5 @@ $(window).on('load',function() {
     setTimeout(function() {
                $('#loader-wrapper').fadeOut();
     }, 2500);
- 
+
 });
