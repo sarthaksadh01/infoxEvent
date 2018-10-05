@@ -14,13 +14,48 @@
     
 function usecandy(){
     
+     $('#exampleModalCenter').modal("hide");
+    // //   $('#nqs').modal();
+    // $('#nqs').modal();
+    // $("#candy").hide();
+    
+    $.ajax({
+      url: 'functions.php', 
+      method:'POST',
+      data:{
+      skip:'yes',
+      },
+
+      success: function(html) {
+      if(html=="Completed!"){
+          
+          
+      }
+      else if(html=='Correct Answer!'){
+          $('#exampleModalCenter').modal("hide");
+          $('#nqs').modal();
+          $("#candy").hide();
+          
+      }
+      else{
+          alert(html);
+      }
+      }
+
+});
     
 }
 
 function atmpt(){
-    var ans = $("#ans").val();
-    if(ans=="")alert("empty");
-    
+//  alert($("input").val().toUpperCase());
+     $('#button1').hide();
+  $('#ajax-loader').fadeIn(1000);
+    var ans = $("#ans").val().toUpperCase();
+    if(ans=="")
+    {alert("empty");
+     $('#button1').fadeIn();
+  $('#ajax-loader').hide();
+    }
     else{
         
     
@@ -41,20 +76,24 @@ function atmpt(){
             
         } 
         else if(html=="Correct Answer!"){
+             $('#button1').fadeIn();
+  $('#ajax-loader').hide();
+             $('#nqs').modal();
+            // $("#exampleModalCenter").show();
             
-            $('#nqs').modal()
        
         }
-       else alert(html);
-        
-        
+       else{ alert(html);
+         $('#button1').fadeIn();
+  $('#ajax-loader').hide();
+       }
       }
 
 });
 
 }
 
-    
+    $("input").val(""); 
     
 }
 

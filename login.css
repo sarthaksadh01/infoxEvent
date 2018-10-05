@@ -6,9 +6,9 @@
 body {
   margin: 30px;
   padding: 40px;
-  background:black;
-  height:700px;
-  width:1200px;
+  background:#221B22;
+  /*height:700px;*/
+  /*width:1200px;*/
   overflow-x: hidden;
   /* overflow-y:auto; */
   /* background:#fff; */
@@ -25,7 +25,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 800px;
-  height: 600px;
+  height: 700px;
   text-align: center;
   display: flex;
   color: white;
@@ -34,7 +34,6 @@ body {
 
 .info {
   width: 45%;
-  background: rgba(20, 20, 20, 0.8);
   padding: 30px 0;
   border-right: 5px solid rgba(30, 30, 30, 0.8);
 }
@@ -52,7 +51,7 @@ body {
 }
 
 .signupForm {
-  width: 60%;
+  width: 61%;
   padding-left:50px;
   margin-bottom:3px;
   padding: 5px 0;
@@ -98,13 +97,33 @@ body {
 }
 
 @media only screen and (max-width: 400px) {
-    .info {
-        display: none;
-    }
+  
     .signupSection{
         transform:translate(-35%,-30%);
         width:500px;
+        margin:50px;
+        /*padding-top:50px;*/
     }
+    body{
+        height:100%;
+        width:100%;
+    }
+    
+}
+
+@media only screen and (max-width: 560px) {
+  
+    .signupSection{
+        transform:translate(-35%,-30%);
+        width:500px;
+        margin:50px;
+        /*padding-top:50px;*/
+    }
+    body{
+        height:100%;
+        width:100%;
+    }
+    
 }
 
 #al{
@@ -115,3 +134,152 @@ cursor:pointer;
   color:pink;
 }
 #login{}
+
+
+
+/*loader css*/
+
+/* Demo Styles */
+#content {
+  margin: 0 auto;
+}
+
+/* The Loader */
+#loader-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  overflow: hidden;
+}
+.no-js #loader-wrapper {
+  display: none;
+}
+
+#loader {
+  display: block;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #16a085;
+  -webkit-animation: spin 1.7s linear infinite;
+          animation: spin 1.7s linear infinite;
+  z-index: 11;
+}
+#loader:before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #e74c3c;
+  -webkit-animation: spin-reverse .6s linear infinite;
+          animation: spin-reverse .6s linear infinite;
+}
+#loader:after {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #f9c922;
+  -webkit-animation: spin 1s linear infinite;
+          animation: spin 1s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin-reverse {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(-360deg);
+  }
+}
+@keyframes spin-reverse {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(-360deg);
+    transform: rotate(-360deg);
+  }
+}
+#loader-wrapper .loader-section {
+  position: fixed;
+  top: 0;
+  width: 51%;
+  height: 100%;
+  background: #222;
+  z-index: 10;
+}
+
+#loader-wrapper .loader-section.section-left {
+  left: 0;
+}
+
+#loader-wrapper .loader-section.section-right {
+  right: 0;
+}
+
+/* Loaded styles */
+.loaded #loader-wrapper .loader-section.section-left {
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+  transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.loaded #loader-wrapper .loader-section.section-right {
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+  transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.loaded #loader {
+  opacity: 0;
+  transition: all 0.3s ease-out;
+}
+
+.loaded #loader-wrapper {
+  visibility: hidden;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  transition: all 0.3s 1s ease-out;
+}
+
+
+
+/*ends*/
+
+
