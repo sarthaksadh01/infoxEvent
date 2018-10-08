@@ -14,9 +14,6 @@ $(document).ready(function() {
 function usecandy() {
 
   $('#exampleModalCenter').modal("hide");
-  // //   $('#nqs').modal();
-  // $('#nqs').modal();
-  // $("#candy").hide();
 
   $.ajax({
     url: '././backend/functions.php',
@@ -25,9 +22,11 @@ function usecandy() {
       skip: 'yes',
     },
 
+
+
     success: function(html) {
       if (html == "Completed!") {
-
+          $("#win").modal();
 
       } else if (html == 'Correct Answer!') {
         $('#exampleModalCenter').modal("hide");
@@ -44,7 +43,6 @@ function usecandy() {
 }
 
 function atmpt() {
-  //  alert($("input").val().toUpperCase());
   $('#button1').hide();
   $('#ajax-loader').fadeIn(1000);
   var ans = $("#ans").val().toUpperCase();
@@ -66,9 +64,9 @@ function atmpt() {
 
       success: function(html) {
         if (html == "Completed") {
-
-          $("body").hide();
-          alert("Completed");
+            $("#win").modal();
+          // $("body").hide();
+          // alert("Completed");
 
         } else if (html == "Correct Answer!") {
           $('#button1').fadeIn();
@@ -78,7 +76,8 @@ function atmpt() {
 
 
         } else {
-          alert(html);
+          $("#ankit").modal();
+          // alert(html);
           $('#button1').fadeIn();
           $('#ajax-loader').hide();
         }
@@ -133,3 +132,55 @@ function show_next_q() {
 
 
 }
+function win(){
+    $("body").hide();
+  $.ajax({
+    url: '././backend/functions.php',
+    method: 'POST',
+    data: {
+      win: 'yes',
+    },
+
+    success: function(data) {
+        alert(data);
+
+      if(data=="Completed"){
+         alert("Contest Over Click ok to check leaderboard");
+        window.location.href = "lb.php";
+      }
+
+    }
+
+  });
+}
+
+function time_over(){
+    
+   $("body").hide();
+   alert("Time Over");
+   
+    $.ajax({
+    url: '././backend/functions.php',
+    method: 'POST',
+    data: {
+      win: 'yes',
+    },
+
+    success: function(data) {
+        alert(data);
+
+      if(data=="Completed"){
+         alert("Contest Over Click ok to check leaderboard");
+        window.location.href = "lb.php";
+      }
+      else{
+          alert("Error occured please refresh the page! ");
+      }
+
+    }
+
+  });
+
+}
+
+

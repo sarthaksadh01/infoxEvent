@@ -2,7 +2,7 @@
 session_start();
 function connect_to_database()
 {
-    $link = mysqli_connect("localhost","root","","solve-to-unlock");
+    $link = mysqli_connect("localhost","navtradi_sadh","sarthak01","navtradi_freelancer");
     if(mysqli_error($link))
     {
       die("Failed connecting to databse.. Please try again!");
@@ -17,6 +17,34 @@ function check_if_login(){
     else return 0;
 }
 
+
+function get_s_e(){
+    $link = connect_to_database();
+$query = "SELECT * FROM `time` WHERE id ='1'";
+  $result = mysqli_query($link,$query);
+  
+  if($result){
+
+    $row = mysqli_fetch_assoc($result);
+    
+    
+    $st=$row['s_time'];
+    $et=$row['e_time'];
+    $sj=$row['start_time'];
+    $ej=$row['end_time'];
+  $s = strtotime(".$st.");
+ $e = strtotime(".$et.");
+ $ar =array(
+     "s"=>$s,
+     "e"=>$e,
+     "sj"=>$sj,
+     "ej"=>$ej
+     
+     );
+ return $ar;
+}
+else("Error....");
+}
 function send_otp($email,$name)
 
 {
@@ -129,7 +157,35 @@ function get_q_no(){
 
 }
 
+// function get_time(){
+    
+ 
+// $link=connect_to_database();
+// $query = "SELECT * FROM `time` WHERE id = 1";
+// $result = mysqli_query($link,$query);
+//   if($result){
+//     $row = mysqli_fetch_assoc($result);
+//     $s=$row['start_time'];
+//     $e=$row['end_time'];
+// echo 'var s = new Date("'.$s.'").getTime();
+// var e  = new Date("'.$e.'").getTime();
+// var now = new Date().getTime();
+// if(now>=s && now<=e){
+//   go_to_contest("index.php");
+// }
+// else if(now>e) {
+//   alert($s);
+//   go_to_contest("lb.php");
+// }
+// else{
+//   alert("Contest will start at :'.$s.'");
+// }';
 
+//   }
+  
+//   else 
+//   die("Error connecting...");
+// }
 function get_status(){
   $email = $_SESSION['email'];
   $link = connect_to_database();
@@ -147,16 +203,70 @@ function get_status(){
   die("Error connecting...");
 }
 
+function completed($email){
+   $link = connect_to_database();
+  $query = "UPDATE `users` SET completed = 'yes' WHERE email = '$email'";
+  $result = mysqli_query($link,$query);
+  if($result){
+    return "Completed";
+  }
+  else return "Disqualified";
+}
+
+
+
+function get_time(){
+    
+     $link = connect_to_database();
+  $query = "UPDATE `users` SET completed = 'yes' WHERE email = '$email'";
+  $result = mysqli_query($link,$query);
+  if($result){
+    return "Completed";
+  }
+  else return "Disqualified";
+    
+}
+
+
+function get_completed()
+{
+    $link=connect_to_database();
+    $email=$_SESSION['email'];
+    $query="SELECT completed FROM `users` WHERE email='$email'";
+     $result = mysqli_query($link,$query);
+     if($result){
+     $row=mysqli_fetch_assoc($result);
+     if($row['completed']=="yes"){
+        return 1; 
+     }
+     else
+     {
+         return 0;
+     }
+     
+     
+     }
+     else
+   {
+       die("Error connnecting.....");
+   }  
+
+}
+
+
+
+
+
+
+
+
 
 if(isset($_POST['otp_sent']))
 
 {
   $link =connect_to_database();
-//   $_SESSION['name'] =     $_POST['name'];
-//   $_SESSION['email'] =    $_POST['email'];
-//   $_SESSION['password'] =     $_POST['password'];
-//   $_SESSION['colg'] =     $_POST['colg'];
   $e = $_POST['email'];
+  $nam = $_POST['name'];
   $query2 = "SELECT * FROM `users` WHERE email = '$e'";
   $result2 = mysqli_query($link,$query2);
   if($result2){
@@ -206,8 +316,8 @@ if(isset($_SESSION['otp']))
      $colg = $_POST['colg'];
      $crs = $_POST['crs'];
      $prob =1;
-    $query = "INSERT INTO `users` (name,email,password,colg,prob,completed,course,status)
-     VALUES('$name','$email','$password','$colg','$prob','no','$crs','no')";
+    $query = "INSERT INTO `users` (name,email,password,colg,prob,completed,course,status,candy)
+     VALUES('$name','$email','$password','$colg','$prob','no','$crs','no','1')";
      $result = mysqli_query($link,$query);
      if($result)
      {
@@ -227,32 +337,6 @@ else echo 'otp Expired!';
 
 
 
-if(isset($_POST['show_leaderboard']))
-
-{
-
-  $link = connect_to_database();
-  $query = "SELECT * FROM `users`
-            ORDER BY prob DESC ";
-  $result = mysqli_query($link,$query);
-  if($result){
-
-    $rank =1;
-
-    while($row = mysqli_fetch_assoc($result))
-
-    {
-      echo $row['name'];
-      $rank++;
-
-    }
-
-  }
-
-  else echo "Connection failed..";
-
-
-}
 
 if(isset($_POST['login']))
 {
@@ -295,7 +379,20 @@ if(isset($_POST['attempt']))
 
 {
 
+
   if(isset($_SESSION['email'])){
+    // date_default_timezone_set("Asia/Calcutta");
+    $t=time();
+    
+    
+    
+    
+    $ar = get_s_e();
+    $s = $ar['s'];
+    $e = $ar['e'];
+    if($t>=$s && $t<=$e){
+
+
 
       $ans = $_POST['ans'];
     $email = $_SESSION['email'];
@@ -309,11 +406,12 @@ if(isset($_POST['attempt']))
       {
         if($qno!=10){
 
+
         $query3 = "UPDATE `users` SET prob = prob+1 WHERE email ='$email'";
         }
         else
         {
-        $query3 = "UPDATE `users` SET completed = 'yes' WHERE email ='$email'";
+        $query3 = "UPDATE `users` SET prob = prob+1, completed = 'yes' WHERE email ='$email'";
         }
         $result3 = mysqli_query($link,$query3);
         if($result3){
@@ -327,13 +425,19 @@ if(isset($_POST['attempt']))
 
       }
 
-      else echo "Wrong Answer1";
+      else echo "Wrong Answer";
 
     }
 
-    else echo $qno;
-
+    else echo "Error!";
   }
+
+
+  else{
+    echo "Completed";
+  }
+}
+
 
   else echo "User Not Logged in!";
 
@@ -377,7 +481,10 @@ if(isset($_POST['nq'])){
 
 
 if(isset($_POST['status'])){
-
+    
+  $t = time();
+  $arr = get_s_e();
+  if($t>=$arr['s']&& $t<=$arr['e']){
   $email = $_SESSION['email'];
   $link = connect_to_database();
   $query = "UPDATE `users` SET status = 'yes' WHERE email ='$email'";
@@ -387,7 +494,36 @@ if(isset($_POST['status'])){
 
   }
    else echo"Unkown Error Occured!";
+  }
+  else echo "Please check your device time and date";
+ 
 
+
+
+}
+
+if(isset($_POST['win'])){
+  $t=time();
+  $arr = get_s_e();
+  $e=$arr['e'];
+  if($t>$e){
+    $com=completed($email);
+    echo $com;
+  }
+  else {
+    $email = $_SESSION['email'];
+    $link = connect_to_database();
+    $query = "SELECT prob FROM `users` WHERE email ='$email'";
+    $result=mysqli_query($link,$query);
+    if($result){
+      $row = mysqli_fetch_assoc($result);
+      if($row['prob']==11){
+        $com=completed($email);
+        echo $com;
+      }
+      else echo "Error connecting!";
+    }
+  }
 
 
 }

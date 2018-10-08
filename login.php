@@ -83,8 +83,8 @@ if(isset($_SESSION['email'])){
 
 
 
-      <li id="center-btn" style=" padding-left:150px;" class="otps">
-       <span> <h5 class="snd" type="" style="width:40px;" id="join-btn" name="join" alt="Join" value=""><span>send otp</span></h5></span>
+      <li id="center-btn" style=" padding-left:130px;" class="otps">
+       <span> <h5 class="snd" type="" style="width:40px;" id="join-btn" name="join" alt="Join" value=""><span>join</span></h5></span>
                </li>
       <li id="center-btn" class="circle" style="display:none;             padding-left:150px;">
 

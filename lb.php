@@ -1,3 +1,7 @@
+<?php include('backend/functions.php');?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,16 +12,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <title>Crptox-LB</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
     <style>
     body {
   width: 100%;
+  height:100%;
   max-width: 1070px;
-  margin: 200px auto;
+  margin: 50px auto;
   font-family: "Roboto", sans-serif;
   background: #ccc;
 }
 #leaderboards {
   font-size: 0;
+
 }
 #leaderboards > * {
   position: relative;
@@ -28,6 +37,7 @@
   padding: 0;
   margin: 0;
   list-style: none;
+  width:1500px;
 }
 #leaderboards .options {
   width: 28%;
@@ -111,42 +121,10 @@
   visibility: hidden;
   transition: .25s;
 }
-#leaderboards .options .sort .tabContents .tab.active {
-  opacity: 1;
-  visibility: visible;
-}
-#leaderboards .options .sort .tabContents .tab > label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 7px;
-  color: rgba(255,255,255,0.5);
-  cursor: pointer;
-  transition: .25s;
-}
-#leaderboards .options .sort .tabContents .tab > label:before {
-  content: "\f10c";
-  font-family: FontAwesome;
-  font-weight: 100;
-  margin-right: 17px;
-}
-#leaderboards .options .sort .tabContents .tab > input:checked + label {
-  color: white;
-}
-#leaderboards .options .sort .tabContents .tab > input:checked + label:before {
-  content: "\f111";
-}
-#leaderboards .options .sort .tabContents .tab > label:last-child {
-  margin-bottom: 0;
-}
-#leaderboards .options .sort .tabContents .tab > input {
-  display: none;
-}
-#leaderboards .options .search::-webkit-input-placeholder {
-  color: rgba(255,255,255,0.35);
-}
+
 #leaderboards .toplist {
-  width: 70%;
-  float: right;
+  width: 90%;
+  padding-left:50px;
 }
 #leaderboards .toplist li {
   background: white;
@@ -230,151 +208,85 @@
 #leaderboards .toplist li[data-rank="3"]:after {
   color: #CC913C;
 }
-#leaderboards .pagination {
-  background: #bbb;
-  border-radius: 6px;
-  margin-top: 14px;
-  padding: 20px;
-  box-shadow: 0 4px #aaa;
-  color: #aaa;
-  height: 72px;
-  box-sizing: border-box;
-  position: relative;
+
+#board{
+  height:400px;
+  overflow:auto;
 }
-#leaderboards .pagination button {
-  border-top-left-radius: 3px;
-  border-bottom-left-raidus: 3px;
-  background: transparent;
-  border: none;
-  outline: none;
-  text-transform: uppercase;
-  font-family: "Roboto", sans-serif;
-  font-weight: bold;
-  line-height: 30px;
-  color: #666;
-  font-size: 20px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 72px;
-  height: 72px;
-  text-align: center;
-  cursor: pointer;
-  transition: .25s;
-}
-#leaderboards .pagination .next {
-  border-radius: 0;
-  border-top-right-radius: 3px;
-  border-bottom-right-raidus: 3px;
-  left: auto;
-  right: 0;
-}
-#leaderboards .pagination button:hover {
-  background: rgba(0,0,0,0.05);
-  box-shadow: 0 4px rgba(0,0,0,0.05);
-}
-#leaderboards .pagination button:before {
-  font-family: FontAwesome;
-}
-#leaderboards .pagination .prev:before {
-  content: "\f104";
-}
-#leaderboards .pagination .next:before {
-  content: "\f105";
-}
-#leaderboards .pagination button[disabled] {
-  color: #9f9f9f;
-  cursor: not-allowed;
-  background: transparent !important;
-  box-shadow: none !important;
-}
-#leaderboards .pagination span {
-  text-align: center;
-  display: block;
-  text-transform: uppercase;
-  line-height: 36px;
-  color: #444;
-  cursor: default;
+
+
+@media only screen and (max-width: 400px) {
+ #abbe{
+     color:#000;
+     display:none;
+ }
 }
     </style>
 
-    <script>
-    
-    $("#leaderboards .tabTitles span").click(function(){
-  $("#leaderboards .active").removeClass("active");
-  $("#leaderboards .tabContents ."+$(this).attr("id")).addClass("active");
-  $(this).addClass("active");
-});
-    </script>
 </head>
 <body>
-<div id="leaderboards">
- <h3><strong>LEADERBOARD FOR INFOX EVENT</strong></h3>
+<h1 class="text-center">"Cryptx-Leaderboard"</h1><br>
+
+<h2 class="text-center ">Unlock your Sherlock</h2>
+
+<div class="form-inline ml-5 mb-5  ">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</div>
+
+<div id="board" class="border">
+
+  <div id="leaderboards" class="pt-5 pb-5" >
+
+
+
  <ul class="toplist">
-   <li data-rank="1">
-     <div class="thumb">
-       <span data-name="BluewaveSwift">1111</span>
-       <span class="name">BluewaveSwift</span>
-       <span class="stat"><b>4304</b>Wins</span>
-     </div>
-     <div class="more">
-       <!-- To be designed & implemented -->
-     </div>
-   </li>
-   <li data-rank="2">
-     <div class="thumb">
-       <span class="img" data-name="BluewaveSwift"></span>
-       <span class="name">BluewaveSwift</span>
-       <span class="stat"><b>4304</b>Wins</span>
-     </div>
-     <div class="more">
-       <!-- To be designed & implemented -->
-     </div>
-   </li>
-   
-   
-   <li data-rank="2">
-     <div class="thumb">
-       <span class="img" data-name="BluewaveSwift"></span>
-       <span class="name">BluewaveSwift</span>
-       <span class="stat"><b>4304</b>Wins</span>
-     </div>
-     <div class="more">
-       <!-- To be designed & implemented -->
-     </div>
-   </li>
-   
-   <li data-rank="2">
-     <div class="thumb">
-       <span class="img" data-name="BluewaveSwift"></span>
-       <span class="name">BluewaveSwift</span>
-       <span class="stat"><b>4304</b>Wins</span>
-     </div>
-     <div class="more">
-       <!-- To be designed & implemented -->
-     </div>
-   </li>
-   <li data-rank="3">
-     <div class="thumb">
-       <span class="img" data-name="BluewaveSwift"></span>
-       <span class="name">BluewaveSwift</span>
-       <span class="stat"><b>4304</b>Wins</span>
-     </div>
-     <div class="more">
-       <!-- To be designed & implemented -->
-     </div>
-   </li>
-   <li data-rank="4">
-     <div class="thumb">
-       <span class="img" data-name="BluewaveSwift"></span>
-       <span class="name">BluewaveSwift</span>
-       <span class="stat"><b>4304</b>Wins</span>
-     </div>
-     <div class="more">
-       <!-- To be designed & implemented -->
-     </div>
-   </li>
+
+<?php
+
+
+  $link = connect_to_database();
+  $query = "SELECT * FROM `users`
+            ORDER BY prob DESC, last_submission ASC";
+  $result = mysqli_query($link,$query);
+  if($result){
+
+    $rank =1;
+
+    while($row = mysqli_fetch_assoc($result))
+
+    {
+      echo '
+      <li data-rank="'.$rank.'">
+        <div class="thumb">
+          <span class="img" data-name=""></span>
+          <span class="name">'.$row['name'].'</span>
+          <span style="margin-right:100px;" class = "text-truncate col-2 float-right"><b>'.$row['colg'].'</b></span>
+        </div>
+      </li>';
+      $rank++;
+
+    }
+
+}
+
+  else die("Connection failed..");
+
+
+
+
+
+ ?>
+
+
+
+
+
+
+
+
  </ul>
+</div>
 </div>
 </body>
 </html>

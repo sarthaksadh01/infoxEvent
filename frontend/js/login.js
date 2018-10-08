@@ -71,6 +71,7 @@ $(document).ready(function() {
         data: {
           otp_sent: 'yes',
           email: email,
+          name:name
         },
 
         success: function(html) {
@@ -81,7 +82,7 @@ $(document).ready(function() {
           } else {
 
             alert(html);
-            $(".load").hide();
+            $(".circle").hide();
             $(".otps").show();
           }
 

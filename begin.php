@@ -1,5 +1,7 @@
 <?php
+
 include('backend/functions.php');
+
 if(isset($_SESSION['email'])){
 
   $status = get_status();
@@ -29,8 +31,10 @@ else{
   <title>start</title>
   <link rel="stylesheet" href="frontend/css/begin.css">
 
+<script type="text/javascript" src="frontend/js/jquery.js"></script>
+  <!--<script type="text/javascript" src="frontend/js/begin.js"></script>-->
+  <?php include('frontend/js/begin.php');  ?>
 
-  <script type="text/javascript" src="frontend/js/begin.js"></script>
 
 </head>
 

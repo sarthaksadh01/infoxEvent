@@ -7,7 +7,9 @@ border: none;
 outline: none;
 box-shadow: none;
 }
-
+.bg1{
+  background-color:#33CB66;
+}
 /*https://i.pinimg.com/originals/d2/8f/fb/d28ffb4316f8875c9dce6b82da375d3c.jpg*/
 body{
 background:#20232A url("puzzle.jpg");
