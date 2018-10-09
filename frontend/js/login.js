@@ -76,6 +76,7 @@ $(document).ready(function() {
 
         success: function(html) {
           if (html == "otp sent successfully!") {
+              alert("otp sent successfully! Please also check your spam folder!")
             $(".circle").hide();
             $("#otp").fadeIn(1000);
             $(".otpr").show();

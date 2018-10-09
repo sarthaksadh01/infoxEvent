@@ -1,7 +1,4 @@
 <?php include('backend/functions.php');?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <title>Crptox-LB</title>
+    <title>Infox | Crptox LeaderBoard</title>
+    <?php include("frontend/seo.php");?>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
 
@@ -21,8 +19,9 @@
   height:100%;
   max-width: 1070px;
   margin: 50px auto;
+  color:#00004d;
   font-family: "Roboto", sans-serif;
-  background: #ccc;
+  background: #b3ccff;
 }
 #leaderboards {
   font-size: 0;
@@ -216,8 +215,9 @@
 
 
 @media only screen and (max-width: 400px) {
- #abbe{
-     color:#000;
+ 
+ #abcd{
+     /*color:#000;*/
      display:none;
  }
 }
@@ -229,10 +229,7 @@
 
 <h2 class="text-center ">Unlock your Sherlock</h2>
 
-<div class="form-inline ml-5 mb-5  ">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-</div>
+
 
 <div id="board" class="border">
 
@@ -245,7 +242,8 @@
 <?php
 
 
-  $link = connect_to_database();
+
+    $link = connect_to_database();
   $query = "SELECT * FROM `users`
             ORDER BY prob DESC, last_submission ASC";
   $result = mysqli_query($link,$query);
@@ -256,12 +254,15 @@
     while($row = mysqli_fetch_assoc($result))
 
     {
+        $q=$row['prob']-1;
+        // $n =explode(" ",$row['name']);
       echo '
       <li data-rank="'.$rank.'">
         <div class="thumb">
-          <span class="img" data-name=""></span>
-          <span class="name">'.$row['name'].'</span>
-          <span style="margin-right:100px;" class = "text-truncate col-2 float-right"><b>'.$row['colg'].'</b></span>
+          <span class="img" data-name="ab"></span>
+          <span class="" data-name="ab"style="padding-right:20px;">'.$q.'/10</span>
+          <span class="text-truncate name">'.$row['name'].'</span>
+          <span  style="margin-right:100px;" class = "text-truncate col-2 float-right"><b id="abcd">'.$row['colg'].'</b></span>
         </div>
       </li>';
       $rank++;
@@ -277,6 +278,8 @@
 
 
  ?>
+    
+  
 
 
 

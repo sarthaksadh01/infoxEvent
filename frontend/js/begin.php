@@ -5,7 +5,7 @@ $arr=get_s_e();
 
 <script>
 
-alert('everything is ok');
+
 function go_to_contest(page){
   alert('Click ok to begin');
 

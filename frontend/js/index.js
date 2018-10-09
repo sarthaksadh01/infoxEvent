@@ -1,10 +1,11 @@
 $(document).ready(function() {
   $(window).keydown(function(event) {
     if (event.keyCode == 13) {
-      //   event.preventDefault();
+      //event.preventDefault();
       return false;
     }
   });
+  
 });
 
 
@@ -65,8 +66,7 @@ function atmpt() {
       success: function(html) {
         if (html == "Completed") {
             $("#win").modal();
-          // $("body").hide();
-          // alert("Completed");
+          setTimeout(win,2000);
 
         } else if (html == "Correct Answer!") {
           $('#button1').fadeIn();
@@ -156,8 +156,9 @@ function win(){
 
 function time_over(){
     
-   $("body").hide();
-   alert("Time Over");
+//   $("body").hide();
+     $("#win").modal();
+    //  alert("Time Over");
    
     $.ajax({
     url: '././backend/functions.php',
@@ -167,7 +168,7 @@ function time_over(){
     },
 
     success: function(data) {
-        alert(data);
+        // alert(data);
 
       if(data=="Completed"){
          alert("Contest Over Click ok to check leaderboard");
@@ -182,5 +183,4 @@ function time_over(){
   });
 
 }
-
 

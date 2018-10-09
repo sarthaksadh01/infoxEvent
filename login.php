@@ -11,11 +11,13 @@ if(isset($_SESSION['email'])){
 <head>
     <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <?php include("frontend/seo.php");?>
+  
 <link rel="stylesheet" href="frontend/css/login.css">
 <script src="https://codepen.io/fbrz/pen/9a3e4ee2ef6dfd479ad33a2c85146fc1.js"></script>
 <script src="frontend/js/jquery.js"></script>
 <script src = "frontend/js/login.js"></script>
-<title>Crptoxlogin</title>
+<title>Infox | Cryptx-login</title>
 <style>
     .info{
         background: url(sherlock.jpg);
@@ -37,10 +39,10 @@ if(isset($_SESSION['email'])){
 
   <div class="info" >
     <h1><strong ><bold>CRYPTX</bold></strong></h2>
+    <h4>Oct 16, 2018 | 9PM-12AM</h4>
 
 
-    <i clas1s="icon ion-ios-ionic-outline" aria-hidden="true"></i>
-    <p id="crypt" style="text-align:center;font-size:20px;padding-top:90px;">
+    <p id="crypt" style="text-align:center;font-size:20px;padding-top:50px;">
         Think you are a high functioning sociopath!!!
         <br><br>
         It's time to Unlock Your Sherlock. Let the detective intincts creep through your brains. Trail the footprints.Get your Mind Palace and unravel the great mysteries.
@@ -97,19 +99,30 @@ if(isset($_SESSION['email'])){
 
     </ul>
     <h4 id="al" onclick="login();">Already joined! login here</h4>
+    <a href="team.php" target="_blank" style="color:#fff;"><strong>For any queries Click here!</strong></a><br><br>
+     <a href="https://infoxpression.in/" target="_blank" style="color:#fff;">*INFOXPRESSION 2018</a>
+     <br><br>
+    <a href="https://www.facebook.com/infoxpression/" target="_blank" style="color:#fff;">* LIKE OUR PAGE FOR UPDATES </a>
   </form>
 </div>
 <div class="signupSection" style="display:none;" id="login" >
 
 <div class="info">
-<h2>Thanks for joining!</h2>
-    <h2>Solve to Unlock</h2>
+<h2>Cryptx-Rules!</h2>
     <i class="icon ion-ios-ionic-outline" aria-hidden="true"></i>
-    <p>Infox is here</p>
+    <p style="text-align:left">
+
+•	The contest comprises of 10 questions in total. The duration of the contest is 3 hours.<br><br>
+•	The participants can move to the next question only if they have answered the current question correctly.<br><br>
+•	The participant can use ‘Candy’ to skip any one question. Candy can be used only once during the whole contest. <br><br>
+•	Leaderboard rankings will be decided based on the time taken by the participants to complete the contest.<br>
+</p>
   </div>
 
 <form action="#" method="POST"  style="background:#221B22" class="signupForm" name="signupform">
+    <br><br>
     <h2>Login here</h2>
+    <br><br>
     <ul class="noBullet">
     <li>
         <label for="email"></label>
@@ -127,9 +140,14 @@ if(isset($_SESSION['email'])){
       </li>
     </ul>
     <h4 id="al" onclick="signup()">Want to join! Click here</h4>
-  </form>
-</div>
+     <a href="team.php" target="_blank" style="color:#fff;"><strong>For any queries Click here!</strong></a>
+<br><br>
+    <a href="https://infoxpression.in/" target="_blank" style="color:#fff;">*INFOXPRESSION 2018</a><br><br>
+    <a href="https://www.facebook.com/infoxpression/" target="_blank" style="color:#fff;">* LIKE OUR PAGE FOR UPDATES </a>
 
+  </form
+
+</div>
 
 
 
