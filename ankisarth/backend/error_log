@@ -1,0 +1,6 @@
+[08-Oct-2018 11:24:49 Asia/Calcutta] PHP Fatal error:  Cannot redeclare get_time() (previously declared in /home/navtradi/public_html/abcd/backend/functions.php:135) in /home/navtradi/public_html/abcd/backend/functions.php on line 200
+[08-Oct-2018 11:29:38 Asia/Calcutta] PHP Fatal error:  Cannot redeclare get_time() (previously declared in /home/navtradi/public_html/abcd/backend/functions.php:135) in /home/navtradi/public_html/abcd/backend/functions.php on line 200
+[08-Oct-2018 11:32:42 Asia/Calcutta] PHP Fatal error:  Cannot redeclare get_time() (previously declared in /home/navtradi/public_html/abcd/backend/functions.php:135) in /home/navtradi/public_html/abcd/backend/functions.php on line 200
+[08-Oct-2018 11:58:44 Asia/Calcutta] PHP Fatal error:  Call to undefined function get_e_s() in /home/navtradi/public_html/abcd/backend/functions.php on line 359
+[08-Oct-2018 11:59:10 Asia/Calcutta] PHP Fatal error:  Call to undefined function get_e_s() in /home/navtradi/public_html/abcd/backend/functions.php on line 359
+[08-Oct-2018 11:59:49 Asia/Calcutta] PHP Fatal error:  Call to undefined function get_e_s() in /home/navtradi/public_html/abcd/backend/functions.php on line 359

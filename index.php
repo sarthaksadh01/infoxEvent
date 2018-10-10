@@ -63,7 +63,7 @@ else{
   <link href="https://fonts.googleapis.com/css?family=Eczar" rel="stylesheet">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Infox | Cryptox</title>
+  <title>Infox | Cryptx</title>
   <?php include("frontend/seo.php");?>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <script src="frontend/js/jquery.js"></script>
@@ -241,14 +241,14 @@ display:none;
 
           <h4 class="text-center" style="color:#000;">
 
-      Move to the next question!
+      Correct Answer!
           </h4>
 
 
         </div>
         <div class="modal-footer">
 
-          <button onclick="show_next_q()" type="button" class="btn btn-success">Continue</button>
+//          <button onclick="show_next_q()" type="button" class="btn btn-success">Continue</button>
         </div>
       </div>
     </div>

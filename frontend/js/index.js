@@ -43,53 +43,6 @@ function usecandy() {
 
 }
 
-function atmpt() {
-  $('#button1').hide();
-  $('#ajax-loader').fadeIn(1000);
-  var ans = $("#ans").val().toUpperCase();
-  if (ans == "") {
-    alert("empty");
-    $('#button1').fadeIn();
-    $('#ajax-loader').hide();
-  } else {
-
-
-
-    $.ajax({
-      url: '././backend/functions.php',
-      method: 'POST',
-      data: {
-        attempt: 'yes',
-        ans: ans
-      },
-
-      success: function(html) {
-        if (html == "Completed") {
-            $("#win").modal();
-          setTimeout(win,2000);
-
-        } else if (html == "Correct Answer!") {
-          $('#button1').fadeIn();
-          $('#ajax-loader').hide();
-          $('#nqs').modal();
-          // $("#exampleModalCenter").show();
-
-
-        } else {
-          $("#ankit").modal();
-          // alert(html);
-          $('#button1').fadeIn();
-          $('#ajax-loader').hide();
-        }
-      }
-
-    });
-
-  }
-
-  $("input").val("");
-
-}
 
 function show_next_q() {
 
@@ -132,6 +85,57 @@ function show_next_q() {
 
 
 }
+
+function atmpt() {
+  $('#button1').hide();
+  $('#ajax-loader').fadeIn(1000);
+  var ans = $("#ans").val().toUpperCase();
+  if (ans == "") {
+    alert("empty");
+    $('#button1').fadeIn();
+    $('#ajax-loader').hide();
+  } else {
+
+
+
+    $.ajax({
+      url: '././backend/functions.php',
+      method: 'POST',
+      data: {
+        attempt: 'yes',
+        ans: ans
+      },
+
+      success: function(html) {
+        if (html == "Completed") {
+            $("#win").modal();
+          setTimeout(win,2000);
+
+        } else if (html == "Correct Answer!") {
+          $('#button1').fadeIn();
+          $('#ajax-loader').hide();
+          $('#nqs').modal();
+           setTimeout(show_next_q,2000);
+          // $("#exampleModalCenter").show();
+
+
+        } else {
+          $("#ankit").modal();
+          // alert(html);
+          $('#button1').fadeIn();
+          $('#ajax-loader').hide();
+        }
+      }
+
+    });
+
+  }
+
+  $("input").val("");
+
+}
+
+
 function win(){
     $("body").hide();
   $.ajax({
