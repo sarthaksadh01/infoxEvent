@@ -54,11 +54,11 @@ for($i=1;$i<=11;$i++){
 		text: "<?php echo $row['question']?>"
 	},
 	axisY: {
-		title: "Questions"
+		title: "Users"
 	},
 	data: [{
 		type: "column",
-		yValueFormatString: "#,##0.## Solved",
+		yValueFormatString: "#,##0.## Users",
 		dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
 	}]
 });
@@ -69,8 +69,8 @@ chart.render();
 
 
 animateValue("visit", 1,<?php echo $rowcount?>, 50);
-animateValue("page", 0, <?php echo $rcount ?>, 50);
-animateValue("unique", 0, <?php echo $rc ?>, 50);
+animateValue("page", -1, <?php echo $rcount ?>, 50);
+animateValue("unique", -1, <?php echo $rc ?>, 50);
 
 
 

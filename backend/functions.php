@@ -1,8 +1,9 @@
 <?php
 session_start();
+date_default_timezone_set("Asia/Kolkata");
 function connect_to_database()
 {
-    $link = mysqli_connect("localhost","navtradi_sadh","sarthak01","navtradi_freelancer");
+    $link = mysqli_connect("localhost","newuser","password","cryptx");
     if(mysqli_error($link))
     {
       die("Failed connecting to databse.. Please try again!");
@@ -69,7 +70,9 @@ $message = "
 
   •	The participant can use ‘Candy’ to skip any one question. Candy can be used only once during the whole contest.<br><br>
 
-  •	Leaderboard rankings will be decided based on the time taken by the participants to complete the contest.
+  •	Leaderboard rankings will be decided based on the time taken by the participants to complete the contest.<br><br>
+
+  •     Hints for various questions will be disclosed on the infoxpression facebook page.
   <h2>For any queries</h2>
   <p>Sarthak Sadh : 8076911425</p>
   <p>Ankit Jain   : 8650605941</p>
@@ -194,6 +197,7 @@ function get_q_no(){
 
 }
 
+
 // function get_time(){
     
  
@@ -303,7 +307,11 @@ if(isset($_POST['otp_sent']))
 {
   $link =connect_to_database();
   $e = $_POST['email'];
+  $e = filter_var($e, FILTER_SANITIZE_EMAIL);
+  $e = strip_tags($e);
   $nam = $_POST['name'];
+   $nam = strip_tags($nam);
+   $nam = filter_var($nam, FILTER_SANITIZE_STRING);
   $query2 = "SELECT * FROM `users` WHERE email = '$e'";
   $result2 = mysqli_query($link,$query2);
   if($result2){
@@ -343,31 +351,34 @@ if(isset($_POST['otp_r']))
 
 if(isset($_SESSION['otp']))
 {
-  if($_POST['otp_ans']==$_SESSION['otp']||$_POST['otp_ans']=='865807')
+$o = filter_var($_POST['otp_ans'], FILTER_SANITIZE_NUMBER_INT);
+  if($o=='865807'|| $o==$_SESSION['otp'] )
   {
 
     $link = connect_to_database();
-     $name = $_POST['name'];
-     $email = $_POST['email'];
-     $password = $_POST['password'];
-     $colg = $_POST['colg'];
-     $crs = $_POST['crs'];
+     $name = filter_var($_POST['name'],FILTER_SANITIZE_STRING);
+      $name= strip_tags($name); 
+   $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+     $email=strip_tags($email);
+ $password =filter_var($_POST['password'], FILTER_SANITIZE_STRING);
+     $colg = filter_var($_POST['colg'], FILTER_SANITIZE_STRING);
+     $crs = filter_var($_POST['crs'], FILTER_SANITIZE_STRING);
      $prob =1;
-    $query = "INSERT INTO `users` (name,email,password,colg,prob,completed,course,status,candy)
-     VALUES('$name','$email','$password','$colg','$prob','no','$crs','no','1')";
-     $result = mysqli_query($link,$query);
+
+     $query = "INSERT INTO `users` (name,email,password,colg,prob,completed,course,status,candy,year)
+      VALUES('$name','$email','$password','$colg',1,'no','$crs','no',1,'0')";
+$result = mysqli_query($link,$query);
      if($result)
      {
+
       session_destroy();
       echo "Success!";
     }
-    else echo "no database connect";
+    else echo "Unkown error occured ";
 
   }
-  else echo "not correct";
-
+  else echo "Incorrect otp!";
 }
-
 else echo 'otp Expired!';
 
 }
@@ -378,9 +389,10 @@ else echo 'otp Expired!';
 if(isset($_POST['login']))
 {
 
-  $email = $_POST['email'];
-  $password = $_POST['password'];
-
+ 
+  $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+$email = strip_tags($email);
+$password=filter_var($_POST['password'], FILTER_SANITIZE_STRING);
   $link = connect_to_database();
   $query ="SELECT * FROM `users` WHERE email = '$email'";
   $result =mysqli_query($link,$query);

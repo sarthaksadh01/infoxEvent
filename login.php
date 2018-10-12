@@ -45,7 +45,7 @@ if(isset($_SESSION['email'])){
     <p id="crypt" style="text-align:center;font-size:20px;padding-top:50px;">
         Think you are a high functioning sociopath!!!
         <br><br>
-        It's time to Unlock Your Sherlock. Let the detective intincts creep through your brains. Trail the footprints.Get your Mind Palace and unravel the great mysteries.
+        It's time to Unlock Your Sherlock. Let the detective instincts creep through your brains. Trail the footprints.Get to your Mind Palace and unravel the great mysteries.
         <br><br>
         <h2><bold>GOOD LUCK!</bold></h2>
 
@@ -66,13 +66,13 @@ if(isset($_SESSION['email'])){
 
 <li>
         <label for="college"></label>
-        <input type="text" class="inputFields" id="colg" name="college" placeholder="College/School*" value="" required/>
+        <input type="text" class="inputFields" id="colg" name="college" placeholder="College/School" value="" required/>
       </li>
 
 
       <li>
         <label for="Course Year"></label>
-        <input type="text" class="inputFields" id="crs" name="year" placeholder="Course/year" value=""/>
+        <input type="text" class="inputFields" id="crs" name="year" placeholder="Course/Class" value=""/>
       </li>
       <li>
         <label for="password"></label>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <?php include("frontend/seo.php")?>
-    <title>Cryptox | Team</title>
+    <title>Cryptx | Team</title>
     
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -119,7 +119,7 @@ h4 {
             <div class="team-name"><a href="#"><h5>Sarthak Sadh</h5></a></div>
             <div class="team-role">Organiser | Web Developer</div>
             <a href="tel:8076911425">Contact</a>
-            <div class="team-description"></div>
+            <div class="team-description">8076911425</div>
           </div><!-- /.team-content -->
         </div><!-- /.team -->
       </div>
@@ -134,7 +134,7 @@ h4 {
             <div class="team-name"><a href="#"><h5>Ankit Jain</h5></a></div>
             <div class="team-role">Organiser | Web Developer</div>
             <a href="tel:8650605941">Contact</a>
-            <div class="team-description"></div>
+            <div class="team-description">8650605941</div>
           </div><!-- /.team-content -->
         </div><!-- /.team -->
       </div>
